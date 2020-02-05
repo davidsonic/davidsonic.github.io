@@ -46,20 +46,22 @@
   };
 </script>
 
-  <meta name="description" content="Quick sort is one of the most fundamental algorithms. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Test1$ hexo g &amp;&amp; hexo s -p 8001 Deploy1$ hexo g &amp;&amp; hexo">
+  <meta name="description" content="司令部的将军们打算在NM的网格地图上部署他们的炮兵部队。一个NM的地图由N行M列组成，地图的每一格可能是山地（用“H” 表示），也可能是平原（用“P”表示），如下图。在每一格平原地形上最多可以布置一支炮兵部队（山地上不能够部署炮兵部队）；一支炮兵部队在地图上的攻击范围如图中黑色区域所示：  如果在地图中的灰色所标识的平原上部署一支炮兵部队，则图中的黑色的网格表示它能够攻击到的区域：沿横向左右各两格">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Quick Sort Template">
-<meta property="og:url" content="http://yoursite.com/blog/hello-world/index.html">
+<meta property="og:title" content="炮兵阵地">
+<meta property="og:url" content="http://yoursite.com/blog/%E7%82%AE%E5%85%B5%E9%98%B5%E5%9C%B0/index.html">
 <meta property="og:site_name" content="Jiali and Sophie&#39;s Blog">
-<meta property="og:description" content="Quick sort is one of the most fundamental algorithms. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Test1$ hexo g &amp;&amp; hexo s -p 8001 Deploy1$ hexo g &amp;&amp; hexo">
+<meta property="og:description" content="司令部的将军们打算在NM的网格地图上部署他们的炮兵部队。一个NM的地图由N行M列组成，地图的每一格可能是山地（用“H” 表示），也可能是平原（用“P”表示），如下图。在每一格平原地形上最多可以布置一支炮兵部队（山地上不能够部署炮兵部队）；一支炮兵部队在地图上的攻击范围如图中黑色区域所示：  如果在地图中的灰色所标识的平原上部署一支炮兵部队，则图中的黑色的网格表示它能够攻击到的区域：沿横向左右各两格">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-01-29T17:42:19.349Z">
-<meta property="article:modified_time" content="2020-01-29T17:42:19.349Z">
+<meta property="og:image" content="http://yoursite.com/downloads/imgs/paobing.png">
+<meta property="article:published_time" content="2020-02-05T03:52:51.000Z">
+<meta property="article:modified_time" content="2020-02-05T03:59:46.741Z">
 <meta property="article:author" content="Jiali Duan">
-<meta property="article:tag" content="basic_algo">
+<meta property="article:tag" content="DP">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/downloads/imgs/paobing.png">
 
-<link rel="canonical" href="http://yoursite.com/blog/hello-world/">
+<link rel="canonical" href="http://yoursite.com/blog/%E7%82%AE%E5%85%B5%E9%98%B5%E5%9C%B0/">
 
 
 <script id="page-configurations">
@@ -71,7 +73,7 @@
   };
 </script>
 
-  <title>Quick Sort Template | Jiali and Sophie's Blog</title>
+  <title>炮兵阵地 | Jiali and Sophie's Blog</title>
   
 
 
@@ -212,7 +214,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/%E7%82%AE%E5%85%B5%E9%98%B5%E5%9C%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -225,7 +227,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Quick Sort Template
+          炮兵阵地
         </h1>
 
         <div class="post-meta">
@@ -234,8 +236,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-01-29 12:42:19" itemprop="dateCreated datePublished" datetime="2020-01-29T12:42:19-05:00">2020-01-29</time>
+              <time title="Created: 2020-02-04 22:52:51 / Modified: 22:59:46" itemprop="dateCreated datePublished" datetime="2020-02-04T22:52:51-05:00">2020-02-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -243,8 +246,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/template/" itemprop="url" rel="index">
-                    <span itemprop="name">template</span>
+                  <a href="/categories/chunji-nowcoder/" itemprop="url" rel="index">
+                    <span itemprop="name">chunji_nowcoder</span>
                   </a>
                 </span>
             </span>
@@ -267,16 +270,35 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Quick sort is one of the most fundamental algorithms.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <p>司令部的将军们打算在N<em>M的网格地图上部署他们的炮兵部队。一个N</em>M的地图由N行M列组成，地图的每一格可能是山地（用“H” 表示），也可能是平原（用“P”表示），如下图。在每一格平原地形上最多可以布置一支炮兵部队（山地上不能够部署炮兵部队）；一支炮兵部队在地图上的攻击范围如图中黑色区域所示：</p>
+<img src="/downloads/imgs/paobing.png" class="example" width="500" height="500" title="title exg" alt="alt exg">
+<p>如果在地图中的灰色所标识的平原上部署一支炮兵部队，则图中的黑色的网格表示它能够攻击到的区域：沿横向左右各两格，沿纵向上下各两格。图上其它白色网格均攻击不到。从图上可见炮兵的攻击范围不受地形的影响。</p>
+<p>现在，将军们规划如何部署炮兵部队，在防止误伤的前提下（保证任何两支炮兵部队之间不能互相攻击，即任何一支炮兵部队都不在其他支炮兵部队的攻击范围内），在整个地图区域内最多能够摆放多少我军的炮兵部队。</p>
+<p>输入描述:</p>
+<blockquote><p>文件的第一行包含两个由空格分割开的正整数，分别表示N和M。<br>接下来的N行，每一行含有连续的M个字符（‘P’或者‘H’），中间没有空格。按顺序表示地图中每一行的数据。</p>
+</blockquote>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g &amp;&amp; hexo s -p 8001</span><br></pre></td></tr></table></figure>
-<h3 id="Deploy"><a href="#Deploy" class="headerlink" title="Deploy"></a>Deploy</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+<p>输出描述:</p>
+<blockquote><p>文件仅在第一行包含一个整数K，表示最多能摆放的炮兵部队的数量。</p>
+</blockquote>
 
 <a id="more"></a>
-<h3 id="quick-sort"><a href="#quick-sort" class="headerlink" title="quick sort"></a>quick sort</h3><figure class="highlight c"><figcaption><span>quick_sort.cpp</span><a href="/downloads/code/quick_sort.cpp">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100005</span>;</span><br><span class="line"><span class="keyword">int</span> q[N];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="keyword">int</span> q[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>{</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> x = q[l], i=l<span class="number">-1</span>, j = r+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j){</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span>(q[i]&lt;x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span>(q[j]&gt;x);</span><br><span class="line">        <span class="keyword">if</span>(i&lt;j) swap(q[i], q[j]);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    quick_sort(q, l ,j);</span><br><span class="line">    quick_sort(q, j+<span class="number">1</span>, r);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;q[i]);</span><br><span class="line">    quick_sort(q, <span class="number">0</span>, n<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) <span class="built_in">printf</span>(<span class="string">"%d "</span>, q[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
+<p>示例1<br>输入</p>
+<blockquote><p>5 4<br>PHPP<br>PPHH<br>PPPP<br>PHPP<br>PHHP</p>
+</blockquote>
+
+<p>输出</p>
+<blockquote><p>6</p>
+</blockquote>
+
+<p>说明</p>
+<blockquote><p>N&lt;=100, M&lt;=10.</p>
+</blockquote>
+
+
+
+<figure class="highlight c"><figcaption><span>paobingzhendi.cpp</span><a href="/downloads/code/paobingzhendi.cpp">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">110</span>, M = <span class="number">15</span>;</span><br><span class="line"><span class="keyword">int</span> S[N];</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">char</span> ms[M];</span><br><span class="line"><span class="keyword">int</span> s[<span class="number">100</span>], tot;</span><br><span class="line"><span class="keyword">int</span> c[<span class="number">1025</span>];</span><br><span class="line"><span class="keyword">int</span> dp[N][<span class="number">1025</span>][<span class="number">1025</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span>{</span><br><span class="line">    <span class="keyword">return</span> x&amp;(-x);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>, ms);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;m;j++){</span><br><span class="line">            S[i]|= (ms[j]==<span class="string">'H'</span>) &lt;&lt;j;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">1</span>&lt;&lt;m;i++)</span><br><span class="line">        <span class="keyword">if</span>(!(i&amp;(i&lt;&lt;<span class="number">1</span>)) &amp;&amp; !(i&amp;(i&lt;&lt;<span class="number">2</span>))) s[++tot] = i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;<span class="number">1</span>&lt;&lt;m;i++)</span><br><span class="line">        c[i]  = c[i-lowbit(i)] + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">1</span>;x&lt;=n;x++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=tot;i++){</span><br><span class="line">            <span class="keyword">if</span>(s[i]&amp;S[x]) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=tot;j++){</span><br><span class="line">                <span class="keyword">if</span>(s[i] &amp; s[j]) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span>(s[j] &amp; S[x<span class="number">-1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=tot;k++){</span><br><span class="line">                    <span class="keyword">if</span>(s[i]&amp;s[k]) <span class="keyword">continue</span>;</span><br><span class="line">                    <span class="keyword">if</span>(s[j]&amp;s[k]) <span class="keyword">continue</span>;</span><br><span class="line">                    <span class="keyword">if</span>(x&gt;=<span class="number">2</span> &amp;&amp; s[k]&amp;S[x<span class="number">-2</span>]) <span class="keyword">continue</span>;</span><br><span class="line">                    dp[x][i][j] = <span class="built_in">max</span>(dp[x][i][j], dp[x<span class="number">-1</span>][j][k] + c[s[i]]);</span><br><span class="line">                    ans = <span class="built_in">max</span>(ans, dp[x][i][j]);</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -286,7 +308,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/basic-algo/" rel="tag"># basic_algo</a>
+              <a href="/tags/DP/" rel="tag"># DP</a>
           </div>
 
         
@@ -295,12 +317,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blog/%E6%A0%91%E7%BD%91%E7%9A%84%E6%A0%B8/" rel="prev" title="树网的核 (NOIP2007)">
-      <i class="fa fa-chevron-left"></i> 树网的核 (NOIP2007)
+    <a href="/blog/%E6%84%A4%E6%80%92%E7%9A%84%E5%B0%8F%E9%B8%9F/" rel="prev" title="愤怒的小鸟 (NOIP2016)">
+      <i class="fa fa-chevron-left"></i> 愤怒的小鸟 (NOIP2016)
     </a></div>
       <div class="post-nav-item">
-    <a href="/blog/%E6%96%B9%E6%A0%BC%E5%8F%96%E6%95%B0/" rel="next" title="方格取数">
-      方格取数 <i class="fa fa-chevron-right"></i>
+    <a href="/blog/%E7%94%B5%E8%84%91%E7%97%85%E6%AF%92/" rel="next" title="电脑病毒">
+      电脑病毒 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -361,7 +383,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Test"><span class="nav-number">1.2.</span> <span class="nav-text">Test</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy"><span class="nav-number">1.3.</span> <span class="nav-text">Deploy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#quick-sort"><span class="nav-number">1.4.</span> <span class="nav-text">quick sort</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
