@@ -6,7 +6,7 @@ const int N = 100010;
 
 int n, m;
 int A[N];
-char s[10];
+char s[100];
 
 typedef long long LL;
 struct node{
@@ -16,23 +16,21 @@ struct node{
 
 }tree[N<<2];
 
-void up(node&A, node B, node C){
-    A.sum = B.sum + C.sum;
+void up(int p){
+    tree[p].sum = tree[p<<1].sum + tree[p<<1|1].sum;
 }
 
 void build(int L, int R, int p){
     tree[p].L = L, tree[p].R =R;
     if(L==R){
-        tree[p].tag = 0;
         tree[p].sum = A[L];
-        // forget
         return ;
     }
     int mid = L+R>>1;
     build(L, mid, p<<1);
     build(mid+1, R, p<<1|1);
 
-    up(tree[p], tree[p<<1], tree[p<<1|1]);
+    up(p);
 }
 
 void down(int p){
@@ -51,7 +49,7 @@ void down(int p){
 void update(int L, int R, int x, int p){
     if(tree[p].L ==L && tree[p].R ==R){
         tree[p].tag += x;
-        tree[p].sum +=  x;
+        tree[p].sum += tree[p].len() * x; // forget;
         //forget
         return ;
     }
@@ -63,7 +61,7 @@ void update(int L, int R, int x, int p){
         update(L, mid, x, p<<1);
         update(mid+1, R, x, p<<1|1);
     }
-    up(tree[p], tree[p<<1], tree[p<<1|1]);
+    up(p);
 }
 
 LL query(int L, int R, int p){
