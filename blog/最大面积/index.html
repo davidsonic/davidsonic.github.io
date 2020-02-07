@@ -46,21 +46,20 @@
   };
 </script>
 
-  <meta name="description" content="Jiali Duan, University of Southern California">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+  <meta name="description" content="现在有由n个宽度为1，高度分别为$h_1,h_2,…h_n$的长方形从左到右依次排列组成的柱形图。问里面包含的长方形的最大面积是多少？ 输入描述: 第一行一个整数n，表示柱形个数。接下来一行n个整数，表示每个柱形的高度$h_i$。    输出描述: 输出最大的矩形面积。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最大面积">
+<meta property="og:url" content="http://yoursite.com/blog/%E6%9C%80%E5%A4%A7%E9%9D%A2%E7%A7%AF/index.html">
 <meta property="og:site_name" content="Jiali and Sophie&#39;s Blog">
-<meta property="og:description" content="Jiali Duan, University of Southern California">
+<meta property="og:description" content="现在有由n个宽度为1，高度分别为$h_1,h_2,…h_n$的长方形从左到右依次排列组成的柱形图。问里面包含的长方形的最大面积是多少？ 输入描述: 第一行一个整数n，表示柱形个数。接下来一行n个整数，表示每个柱形的高度$h_i$。    输出描述: 输出最大的矩形面积。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-01-26T20:49:56.000Z">
-<meta property="article:modified_time" content="2020-02-07T02:29:55.912Z">
+<meta property="article:published_time" content="2020-02-07T05:27:43.000Z">
+<meta property="article:modified_time" content="2020-02-07T05:29:50.359Z">
 <meta property="article:author" content="Jiali Duan">
-<meta property="article:tag" content="Jiali Duan">
-<meta property="article:tag" content=" USC">
+<meta property="article:tag" content="monotone_stack">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/tags/">
+<link rel="canonical" href="http://yoursite.com/blog/%E6%9C%80%E5%A4%A7%E9%9D%A2%E7%A7%AF/">
 
 
 <script id="page-configurations">
@@ -68,12 +67,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>tags | Jiali and Sophie's Blog
-  </title>
+  <title>最大面积 | Jiali and Sophie's Blog</title>
   
 
 
@@ -205,52 +203,127 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
           <div class="content">
             
 
   <div class="posts-expand">
-    
-    
-    
-    <div class="post-block" lang="en">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/%E6%9C%80%E5%A4%A7%E9%9D%A2%E7%A7%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jiali Duan">
+      <meta itemprop="description" content="Jiali Duan, University of Southern California">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jiali and Sophie's Blog">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          最大面积
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">tags
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
 
-<div class="post-meta">
+              <time title="Created: 2020-02-07 00:27:43 / Modified: 00:29:50" itemprop="dateCreated datePublished" datetime="2020-02-07T00:27:43-05:00">2020-02-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/basic-algo/" itemprop="url" rel="index">
+                    <span itemprop="name">basic_algo</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>现在有由n个宽度为1，高度分别为$h_1,h_2,…h_n$的长方形从左到右依次排列组成的柱形图。问里面包含的长方形的最大面积是多少？</p>
+<p>输入描述:</p>
+<blockquote><p>第一行一个整数n，表示柱形个数。<br>接下来一行n个整数，表示每个柱形的高度$h_i$。</p>
+</blockquote>
+
+
+<p>输出描述:</p>
+<blockquote><p>输出最大的矩形面积。</p>
+</blockquote>
+
+<a id="more"></a>
+
+<p>示例1<br>输入</p>
+<blockquote><p>7<br>2 1 4 5 1 3 3</p>
+</blockquote>
+
+<p>输出</p>
+<blockquote><p>8</p>
+</blockquote>
+
+<p>说明</p>
+<blockquote><p>n&lt;=10^5.</p>
+</blockquote>
+
+
+<figure class="highlight c"><figcaption><span>zuidamianji.cpp</span><a href="/downloads/code/zuidamianji.cpp">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100010</span>;</span><br><span class="line"><span class="keyword">int</span> h[N];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> L[N], R[N];</span><br><span class="line"><span class="keyword">int</span> stk[N], t=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;h[i]);</span><br><span class="line"></span><br><span class="line">    stk[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) {</span><br><span class="line">        <span class="keyword">while</span> (t &gt; <span class="number">0</span> &amp;&amp; h[stk[t]] &gt;= h[i]) t--;</span><br><span class="line">        L[i] = stk[t];</span><br><span class="line">        stk[++t] = i;</span><br><span class="line">    }</span><br><span class="line">    stk[<span class="number">0</span>] = n+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;i--){</span><br><span class="line">        <span class="keyword">while</span>(t&gt;<span class="number">0</span> &amp;&amp; h[stk[t]] &gt;= h[i]) t--;</span><br><span class="line">        R[i] = stk[t];</span><br><span class="line">        stk[++t] = i;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//    for(int i=1;i&lt;=n;i++) printf("%d ", L[i]);</span></span><br><span class="line"><span class="comment">//    puts("");</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//    for(int i=1;i&lt;=n;i++) printf("%d ", R[i]);</span></span><br><span class="line"><span class="comment">//    puts("");</span></span><br><span class="line"></span><br><span class="line">    LL res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">        res = <span class="built_in">max</span>(res, <span class="number">1L</span>L * (R[i]-L[i] <span class="number">-1</span>) * h[i]);</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, res);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/monotone-stack/" rel="tag"># monotone_stack</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/hello-world/" rel="prev" title="Quick Sort Template">
+      <i class="fa fa-chevron-left"></i> Quick Sort Template
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-              9 tags in total
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/DP/" style="font-size: 30px; color: #111">DP</a> <a href="/tags/Instance-Segmentation/" style="font-size: 12px; color: #ccc">Instance Segmentation</a> <a href="/tags/basic-algo/" style="font-size: 12px; color: #ccc">basic_algo</a> <a href="/tags/chunji-nowcoder/" style="font-size: 12px; color: #ccc">chunji_nowcoder</a> <a href="/tags/data-structure/" style="font-size: 21px; color: #6f6f6f">data_structure</a> <a href="/tags/lazy-tag/" style="font-size: 12px; color: #ccc">lazy_tag</a> <a href="/tags/monotone-stack/" style="font-size: 12px; color: #ccc">monotone_stack</a> <a href="/tags/simulation/" style="font-size: 12px; color: #ccc">simulation</a> <a href="/tags/tree/" style="font-size: 12px; color: #ccc">tree</a>
-            </div>
-          </div>
-        
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
   </div>
 
 
