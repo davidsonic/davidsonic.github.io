@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>树的直径</title>
+    <url>/blog/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/</url>
+    <content><![CDATA[<p>给定一棵树，求出这棵树的直径，即两个节点距离的最大值。</p>
+<p>输入描述:</p>
+<blockquote><p>输入第一行，一个整数n;<br>接下来n−1行，每行三个整数a,b,c，表示连接节点a和b的边长为c</p>
+</blockquote>
+
+
+<p>输出描述:</p>
+<blockquote><p>输出这棵树的直径。</p>
+</blockquote>
+
+<a id="more"></a>
+
+<p>示例1<br>输入</p>
+<blockquote><p>6<br>0 1 3<br>1 5 4<br>1 2 2<br>2 3 1<br>2 4 5</p>
+</blockquote>
+
+<p>输出</p>
+<blockquote><p>11</p>
+</blockquote>
+
+<p>说明</p>
+<blockquote><p>csacademy.com/app/graph_editor</p>
+</blockquote>
+
+
+<figure class="highlight c"><figcaption><span>tree_radius1.cpp</span><a href="/downloads/code/tree_radius1.cpp">view raw</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">100010</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>{</span></span><br><span class="line">    <span class="keyword">int</span> to, val;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;Node&gt;edges[M];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ans = <span class="number">0</span>, R=<span class="number">-1</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> f, <span class="keyword">int</span> dis)</span></span>{</span><br><span class="line">    <span class="keyword">if</span>(dis &gt; ans) {ans = dis, R = x;}</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;edges[x].<span class="built_in">size</span>();i++){</span><br><span class="line">        <span class="keyword">int</span> y = edges[x][i].to;</span><br><span class="line">        <span class="keyword">if</span>(y==f) <span class="keyword">continue</span>;</span><br><span class="line">        dfs(y, x, dis + edges[x][i].val);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n<span class="number">-1</span>;i++){</span><br><span class="line">        <span class="keyword">int</span> a, b, c;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;a, &amp;b, &amp;c);</span><br><span class="line">        edges[a].push_back({b,c});</span><br><span class="line">        edges[b].push_back({a,c});</span><br><span class="line">    }</span><br><span class="line">    dfs(<span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span>);</span><br><span class="line">    dfs(R, <span class="number">-1</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><figcaption><span>tree_radius2.cpp</span><a href="/downloads/code/tree_radius2.cpp">view raw</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">100010</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>{</span></span><br><span class="line">    <span class="keyword">int</span> to, val;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;Node&gt;edges[M];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> f)</span></span>{</span><br><span class="line">    <span class="keyword">int</span> fir = <span class="number">0</span>, sec = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;edges[x].<span class="built_in">size</span>();i++){</span><br><span class="line">        <span class="keyword">int</span> y = edges[x][i].to;</span><br><span class="line">        <span class="keyword">if</span>(y==f) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">int</span> t= dfs(y, x) + edges[x][i].val;</span><br><span class="line">        <span class="keyword">if</span>(t &gt;fir){</span><br><span class="line">            sec = fir;</span><br><span class="line">            fir = t;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(t &gt; sec)</span><br><span class="line">            sec = t;</span><br><span class="line">    }</span><br><span class="line">    ans = <span class="built_in">max</span>(ans, fir+sec);</span><br><span class="line">    <span class="keyword">return</span> fir;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n<span class="number">-1</span>;i++){</span><br><span class="line">        <span class="keyword">int</span> a, b, c;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;a, &amp;b, &amp;c);</span><br><span class="line">        edges[a].push_back({b,c});</span><br><span class="line">        edges[b].push_back({a,c});</span><br><span class="line">    }</span><br><span class="line">    dfs(<span class="number">0</span>, <span class="number">-1</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>chunji_nowcoder</category>
+      </categories>
+      <tags>
+        <tag>tree</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ST表</title>
     <url>/blog/ST%E8%A1%A8/</url>
     <content><![CDATA[<p>有一个长度为n的数组A，有m个询问，每次你需要回答在区间[L,R]内的数的最大值。</p>
