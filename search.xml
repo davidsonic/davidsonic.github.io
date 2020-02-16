@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>松鼠的新家</title>
+    <url>/blog/%E6%9D%BE%E9%BC%A0%E7%9A%84%E6%96%B0%E5%AE%B6/</url>
+    <content><![CDATA[<p>松鼠的新家是一棵树，前几天刚刚装修了新家，新家有n个房间，并且有n-1根树枝连接，每个房间都可以相互到达，且俩个房间之间的路线都是唯一的。天哪，他居然真的住在“树”上。松鼠想邀请小熊维尼前来参观，并且还指定一份参观指南，他希望维尼能够按照他的指南顺序，先去a_1，再去a_2，……，最后到a_n，去参观新家。</p>
+<p>可是这样会导致维尼重复走很多房间，懒惰的维尼不听地推辞。可是松鼠告诉他，每走到一个房间，他就可以从房间拿一块糖果吃。维尼是个馋家伙，立马就答应了。</p>
+<p>现在松鼠希望知道为了保证维尼有糖果吃，他需要在每一个房间各放至少多少个糖果。因为松鼠参观指南上的最后一个房间an是餐厅，餐厅里他准备了丰盛的大餐，所以当维尼在参观的最后到达餐厅时就不需要再拿糖果吃了。</p>
+<p>输入描述:</p>
+<blockquote><p>第一行一个整数n，表示房间个数 2&lt;=n&lt;=300000;</p>
+<p>第二行n个整数，依次描述 a1~an。</p>
+<p>接下来n-1行，每行两个整数x，y，表示标号x和y的两个房间之间有树枝相连。</p>
+</blockquote>
+
+
+<p>输出描述:</p>
+<blockquote><p>一共n行，第i行输出标号为i的房间至少需要放多少个糖果，才能让维尼有糖果吃。</p>
+</blockquote>
+
+<a id="more"></a>
+
+<p>示例1<br>输入</p>
+<blockquote><p>5<br>1 4 5 3 2<br>1 2<br>2 4<br>2 3<br>4 5</p>
+</blockquote>
+
+<p>输出</p>
+<blockquote><p>1<br>2<br>1<br>2<br>1</p>
+</blockquote>
+
+<p>说明</p>
+<blockquote><p>有n个点的一棵树， 沿着a1~an顺序去访问每个点， 路径上经过的点都要被加上一次，最后输出每个点被加的次数。</p>
+</blockquote>
+
+
+<figure class="highlight c"><figcaption><span>songshuhome.cpp</span><a href="/downloads/code/songshuhome.cpp">view raw</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">300010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> S = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> path[N];</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;edges[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dis[N], dep[N];</span><br><span class="line"><span class="keyword">int</span> fa[N][S+<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> cnt[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> f, <span class="keyword">int</span> d)</span></span>{</span><br><span class="line">    fa[x][<span class="number">0</span>] = f, dep[x] = dep[f] +<span class="number">1</span>, dis[x] = d;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;edges[x].<span class="built_in">size</span>();i++){</span><br><span class="line">        <span class="keyword">int</span> y = edges[x][i];</span><br><span class="line">        <span class="keyword">if</span>(y==f) <span class="keyword">continue</span>;</span><br><span class="line">        dfs(y, x, d + <span class="number">1</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">goUp</span><span class="params">(<span class="keyword">int</span> &amp;x, <span class="keyword">int</span> <span class="built_in">step</span>)</span></span>{</span><br><span class="line"><span class="comment">//  starts from 0</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=S;i++){</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">step</span> &amp; (<span class="number">1</span>&lt;&lt;i)) x = fa[x][i];</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>{</span><br><span class="line">    <span class="keyword">if</span>(dep[x] &lt; dep[y]) swap(x, y);</span><br><span class="line">    goUp(x, dep[x]-dep[y]);</span><br><span class="line">    <span class="keyword">if</span>(x==y) <span class="keyword">return</span> x; <span class="comment">// easy to forget</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=S;i&gt;=<span class="number">0</span>;i--){</span><br><span class="line">        <span class="keyword">if</span>(fa[x][i] != fa[y][i])</span><br><span class="line">            x = fa[x][i], y= fa[y][i];</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> fa[x][<span class="number">0</span>];</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> f)</span></span>{</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;edges[x].<span class="built_in">size</span>();i++){</span><br><span class="line">        <span class="keyword">int</span> y = edges[x][i];</span><br><span class="line">        <span class="keyword">if</span>(y==f) <span class="keyword">continue</span>;</span><br><span class="line">        DFS(y, x);</span><br><span class="line">        cnt[x] += cnt[y];</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;path[i]);</span><br><span class="line">    <span class="keyword">int</span> a, b;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++){</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;a, &amp;b);</span><br><span class="line">        edges[a].push_back(b);</span><br><span class="line">        edges[b].push_back(a);</span><br><span class="line">    }</span><br><span class="line">    dfs(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=S;j++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">            fa[i][j] = fa[ fa[i][j<span class="number">-1</span>] ][j<span class="number">-1</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//    for(int i=1;i&lt;=n;i++) printf("%d ", fa[i][0]);</span></span><br><span class="line"><span class="comment">//    puts("");</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++){</span><br><span class="line">        a = path[i], b = path[i+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> c = lca(a, b);</span><br><span class="line"><span class="comment">//        printf("%d %d %d\n", a, b, c);</span></span><br><span class="line">        cnt[a]++, cnt[b]++, cnt[c]--, cnt[fa[c][<span class="number">0</span>]]--;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    DFS(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++) cnt[path[i]]--; <span class="comment">//why?</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, cnt[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>chunji_nowcoder</category>
+      </categories>
+      <tags>
+        <tag>LCA</tag>
+        <tag>chafen</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>树上两点距离</title>
     <url>/blog/%E6%A0%91%E4%B8%8A%E4%B8%A4%E7%82%B9%E8%B7%9D%E7%A6%BB/</url>
     <content><![CDATA[<p>给定一棵树，求树上两点间的距离。<br>输入描述:</p>
