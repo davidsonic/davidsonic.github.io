@@ -23,7 +23,7 @@ void dfs(int x, int f, int d){
 
 // get top vector
 void dfs2(int x, int f, int tp){
-    top[x] = tp;
+    top[x] = tp; ID[x] = ++tot;
     if(son[x]) dfs2(son[x], x, tp);
     for(int i=0;i<edges[x].size();i++){
         int y = edges[x][i];
@@ -36,6 +36,7 @@ void dfs2(int x, int f, int tp){
 int LCA(int a, int b){
     while(top[a]!=top[b]){
         if(dep[top[a]] > dep[top[b]]){
+            // ID[top[a]], ID[a] 是一段连续的区间
             a = fa[top[a]];
         }else b = fa[top[b]];
     }
