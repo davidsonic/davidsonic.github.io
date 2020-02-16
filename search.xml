@@ -1,6 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>过山车</title>
+    <url>/blog/%E8%BF%87%E5%B1%B1%E8%BD%A6/</url>
+    <content><![CDATA[<p>给定n个男生和m个女生，坐过山车。过山车每排只有两个位置，且只能是一男一女。已经一些想坐在一起的意愿。<br>求最多可以坐多少排？</p>
+<p>输入描述:</p>
+<blockquote><p>输入数据的第一行是三个整数K , M , N，分别表示可能的组合数目，女生的人数，男生的人数。K&lt;=1000。<br>N, M&lt;=500.接下来的K行，每行有两个数，分别表示女生A_i愿意和男生B_j坐一起。最后一个0结束输入。</p>
+</blockquote>
+
+
+<p>输出描述:</p>
+<blockquote><p>对于每组数据，输出一个整数，表示可以坐上过山车的最多组合数。</p>
+</blockquote>
+
+<a id="more"></a>
+
+<p>示例1<br>输入</p>
+<blockquote><p>6 3 3<br>1 1<br>1 2<br>1 3<br>2 1<br>2 3<br>3 1<br>0</p>
+</blockquote>
+
+<p>输出</p>
+<blockquote><p>3</p>
+</blockquote>
+
+
+<figure class="highlight c"><figcaption><span>guoshanche.cpp</span><a href="/downloads/code/guoshanche.cpp">view raw</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">510</span>;</span><br><span class="line"><span class="keyword">int</span> mp[N][N];</span><br><span class="line"><span class="keyword">int</span> st[N];</span><br><span class="line"><span class="keyword">int</span> a[N], b[N];</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> ans;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">sp</span><span class="params">(<span class="keyword">int</span> v)</span></span>{</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++){</span><br><span class="line">        <span class="keyword">if</span>(mp[v][i] &amp;&amp; !st[i]){</span><br><span class="line">            st[i] = <span class="number">1</span>; <span class="comment">//类似于减枝</span></span><br><span class="line">            <span class="keyword">if</span>(b[i]==<span class="number">-1</span> || sp(b[i])){</span><br><span class="line">                b[i] = v;</span><br><span class="line">                a[v] = i;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>{</span><br><span class="line">    ans = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(a, <span class="number">-1</span>, <span class="keyword">sizeof</span> a);</span><br><span class="line">    <span class="built_in">memset</span>(b, <span class="number">-1</span>, <span class="keyword">sizeof</span> b);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">        <span class="keyword">if</span>(a[i]==<span class="number">-1</span>){</span><br><span class="line">            <span class="built_in">memset</span>(st, <span class="number">0</span>, <span class="keyword">sizeof</span> st); <span class="comment">//对每一i，都要做一次</span></span><br><span class="line">            <span class="keyword">if</span>(sp(i)) ans ++;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="keyword">int</span> k;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;k) &amp;&amp; k){</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">        <span class="keyword">int</span> a, b;</span><br><span class="line">        <span class="built_in">memset</span>(mp, <span class="number">0</span>, <span class="keyword">sizeof</span> mp);</span><br><span class="line">        <span class="keyword">while</span>(k--){</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;a, &amp;b);</span><br><span class="line">            mp[a][b] = <span class="number">1</span>;</span><br><span class="line">        }</span><br><span class="line">        solve();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>chunji_nowcoder</category>
+      </categories>
+      <tags>
+        <tag>graph</tag>
+        <tag>matching</tag>
+        <tag>hungarian</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Theremustbesomethingwrong</title>
+    <url>/blog/Theremustbesomethingwrong/</url>
+    <content><![CDATA[<p>龙龙得知2020年中国将有2000万至4000万男人娶不到老婆后。他打算好好调查一下是不是人们的感情出现问题。他对n个人进行调查，得到m条信息，每条信息表示为某两人曾经是情侣。由于他不知道这些人的性别，请你帮他判断一下，有没有同性是情侣的情况?</p>
+<p>输入描述:</p>
+<blockquote><p>第一行两个整数n和m。<br>接下来m行，每行两个整数a和b，表示编号为a的人和编号为b的人，曾经是情侣,a≠b。<br>对于100%的数据，n的范围[2,100000],m的范围[0,100000]。</p>
+</blockquote>
+
+
+<p>输出描述:</p>
+<blockquote><p>如果一切正常输出：it’s your own problem<br>如果出现同性是情侣的情况输出：there are must be something wrong</p>
+</blockquote>
+
+<a id="more"></a>
+
+<p>示例1<br>输入</p>
+<blockquote><p>4 4<br>1 2<br>2 3<br>3 4<br>4 1</p>
+</blockquote>
+
+<p>输出</p>
+<blockquote><p>it’s your own problem</p>
+</blockquote>
+
+<p>示例2<br>输入</p>
+<blockquote><p>3 3<br>1 2<br>1 3<br>2 3</p>
+</blockquote>
+
+<p>输出</p>
+<blockquote><p>there are must be something wrong</p>
+</blockquote>
+
+
+<figure class="highlight c"><figcaption><span>coloring.cpp</span><a href="/downloads/code/coloring.cpp">view raw</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100010</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;edges[N];</span><br><span class="line"><span class="keyword">int</span> colors[N];</span><br><span class="line"><span class="keyword">bool</span> ff = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> c)</span></span>{</span><br><span class="line">    colors[x] = c;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;edges[x].<span class="built_in">size</span>();i++){</span><br><span class="line">        <span class="keyword">int</span> y = edges[x][i];</span><br><span class="line">        <span class="keyword">if</span>(colors[x]==colors[y]){</span><br><span class="line">            ff = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }<span class="keyword">else</span> <span class="keyword">if</span>(colors[y]==<span class="number">0</span>){</span><br><span class="line">            dfs(y, -c);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">int</span> a, b;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++){</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;a, &amp;b);</span><br><span class="line">        edges[a].push_back(b);</span><br><span class="line">        edges[b].push_back(a);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="built_in">memset</span>(colors, <span class="number">0</span>, <span class="keyword">sizeof</span>(colors));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">        <span class="keyword">if</span>(colors[i]==<span class="number">0</span>) dfs(i, <span class="number">1</span>);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span>(ff) <span class="built_in">puts</span>(<span class="string">"it's your own problem"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">"there are must be something wrong"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>chunji_nowcoder</category>
+      </categories>
+      <tags>
+        <tag>graph</tag>
+        <tag>coloring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>灌水</title>
+    <url>/blog/%E7%81%8C%E6%B0%B4/</url>
+    <content><![CDATA[<p>Farmer John已经决定把水灌到他的n(1≤n≤300)块农田，农田被数字1到n标记。把一块土地进行灌水有两种方法，从其他农田饮水，或者这块土地建造水库。 建造一个水库需要花费wi(1≤wi≤105),连接两块土地需要花费pij。 计算Farmer John所需的最少代价。<br>输入描述:</p>
+<blockquote><p>第一行：一个数n。</p>
+<p>第二行到第n+1行：第i+1行含有一个数wi。</p>
+<p>第n+2行到第2∗n+1行：第n+1+i行有n个被空格分开的数，第j个数代表pij。</p>
+</blockquote>
+
+
+<p>输出描述:</p>
+<blockquote><p>一个单独的数代表最小代价.</p>
+</blockquote>
+
+<a id="more"></a>
+
+<p>示例1<br>输入</p>
+<blockquote><p>4<br>5<br>4<br>4<br>3<br>0 2 2 2<br>2 0 3 3<br>2 3 0 4<br>2 3 4 0</p>
+</blockquote>
+
+<p>输出</p>
+<blockquote><p>9</p>
+</blockquote>
+
+
+
+<figure class="highlight c"><figcaption><span>guanshui.cpp</span><a href="/downloads/code/guanshui.cpp">view raw</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">310</span>;</span><br><span class="line"><span class="keyword">int</span> fa[N];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>{</span></span><br><span class="line">    <span class="keyword">int</span> a, b, v;</span><br><span class="line">}edges[N*N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> tot;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>{</span><br><span class="line">    <span class="keyword">if</span>(x==fa[x]) <span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">return</span> fa[x] = <span class="built_in">find</span>(fa[x]);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(Edge &amp;a, Edge&amp;b)</span></span>{</span><br><span class="line">    <span class="keyword">return</span> a.v &lt; b.v;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;val);</span><br><span class="line">        edges[++tot].a = <span class="number">0</span>, edges[tot].b = i, edges[tot].v = val;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++){</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;val);</span><br><span class="line">            <span class="keyword">if</span>(i&lt;j)</span><br><span class="line">                edges[++tot].a= i, edges[tot].b = j, edges[tot].v = val;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++) fa[i] = i;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    sort(edges+<span class="number">1</span>, edges+tot+<span class="number">1</span>, cmp);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=tot;i++){</span><br><span class="line">        <span class="keyword">int</span> a = <span class="built_in">find</span>(edges[i].a);</span><br><span class="line">        <span class="keyword">int</span> b = <span class="built_in">find</span>(edges[i].b);</span><br><span class="line">        <span class="keyword">if</span>(a!=b) fa[a] = b, ans += edges[i].v;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>chunji_nowcoder</category>
+      </categories>
+      <tags>
+        <tag>graph</tag>
+        <tag>kruskal</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>昂贵的聘礼</title>
     <url>/blog/%E6%98%82%E8%B4%B5%E7%9A%84%E8%81%98%E7%A4%BC/</url>
     <content><![CDATA[<p>年轻的探险家来到了一个印第安部落里。在那里他和酋长的女儿相爱了，于是便向酋长去求亲。酋长要他用10000个金币作为聘礼才答应把女儿嫁给他。探险家拿不出这么多金币，便请求酋长降低要求。酋长说：”嗯，如果你能够替我弄到大祭司的皮袄，我可以只要8000金币。如果你能够弄来他的水晶球，那么只要5000金币就行了。”探险家就跑到大祭司那里，向他要求皮袄或水晶球，大祭司要他用金币来换，或者替他弄来其他的东西，他可以降低价格。探险家于是又跑到其他地方，其他人也提出了类似的要求，或者直接用金币换，或者找到其他东西就可以降低价格。不过探险家没必要用多样东西去换一样东西，因为不会得到更低的价格。探险家现在很需要你的帮忙，让他用最少的金币娶到自己的心上人。另外他要告诉你的是，在这个部落里，等级观念十分森严。地位差距超过一定限制的两个人之间不会进行任何形式的直接接触，包括交易。他是一个外来人，所以可以不受这些限制。但是如果他和某个地位较低的人进行了交易，地位较高的的人不会再和他交易，他们认为这样等于是间接接触，反过来也一样。因此你需要在考虑所有的情况以后给他提供一个最好的方案。<br>为了方便起见，我们把所有的物品从1开始进行编号，酋长的允诺也看作一个物品，并且编号总是1。每个物品都有对应的价格P，主人的地位等级L，以及一系列的替代品Ti和该替代品所对应的”优惠”Vi。如果两人地位等级差距超过了M，就不能”间接交易”。你必须根据这些数据来计算出探险家最少需要多少金币才能娶到酋长的女儿。</p>
