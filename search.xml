@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>组合计数</title>
+    <url>/blog/%E7%BB%84%E5%90%88%E8%AE%A1%E6%95%B0/</url>
+    <content><![CDATA[<p>求组合数，C(n, m)% P。</p>
+<p>输入描述:</p>
+<blockquote><p>两个整数n和m</p>
+</blockquote>
+
+
+<p>输出描述:</p>
+<blockquote><p>C(n,m) 表示的结果</p>
+</blockquote>
+
+<a id="more"></a>
+
+<p>示例1<br>输入</p>
+<blockquote><p>6 3</p>
+</blockquote>
+
+<p>输出</p>
+<blockquote><p>20</p>
+</blockquote>
+
+
+
+<figure class="highlight c"><figcaption><span>zuheshu2.cpp</span><a href="/downloads/code/zuheshu2.cpp">view raw</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000010</span>, P = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> pcnt, pr[N+<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> cnt[N+<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> mark[N+<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">prime</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=N;i++)</span><br><span class="line">        <span class="keyword">if</span>(!mark[i]) {</span><br><span class="line">            pr[++pcnt] = i;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + i; j &lt;= n; j += i)</span><br><span class="line">                mark[j] = <span class="number">1</span>;</span><br><span class="line">        }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">//阶乘质因子分解</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span></span>{</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=pcnt &amp;&amp; pr[i]&lt;=n;i++){</span><br><span class="line">        <span class="keyword">int</span> x = pr[i];</span><br><span class="line">        <span class="comment">// x在n!中指数</span></span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> t = x;</span><br><span class="line">        <span class="keyword">while</span>(t&lt;=n){</span><br><span class="line">            cnt[x] += n/t * k;</span><br><span class="line">            t*=x;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">fast</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> x)</span></span>{</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(x){</span><br><span class="line">        <span class="keyword">if</span>(x&amp;<span class="number">1</span>) res = res * n % P;</span><br><span class="line">        n = n * n % P;</span><br><span class="line">        x &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">    prime();</span><br><span class="line">    solve(n, <span class="number">1</span>);</span><br><span class="line">    solve(n-m, <span class="number">-1</span>);</span><br><span class="line">    solve(m, <span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">if</span>(cnt[i])</span><br><span class="line">            res = res * fast(i, cnt[i]) % P;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, res);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>chunji_nowcoder</category>
+      </categories>
+      <tags>
+        <tag>Math</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>区间素数</title>
     <url>/blog/%E5%8C%BA%E9%97%B4%E7%B4%A0%E6%95%B02/</url>
     <content><![CDATA[<p>给你两个整数a,b，求[a,b]区间内素数的个数</p>
