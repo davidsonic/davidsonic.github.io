@@ -1,36 +1,33 @@
 #include <iostream>
+#include <cstring>
+#include <cmath>
 using namespace std;
 
+const int N = 1000010;
+int mark[N+10], pmark[N+10];
 typedef long long LL;
-const int N = 2000010;
-int st[N+10];
-int sum[N+10];
 
-int n;
+LL a, b;
+void prime(){
+    int n = sqrt(b);
+    for(int i=2;i<=n;i++)
+        if(!mark[i]){
+            for(int j=i+i;j<=n;j+=i)
+                mark[j] = 1;
+            LL p;
+            if(a%i==0) p = a;
+            else p = max(2LL, (a/i + 1) * i);
+            for(; p<=b; p+=i) pmark[p-a] = 1;
+        }
+}
 
 int main(){
-    for(int i=1;i<=N;i++) sum[i] = 1;
-    for(int i=2;i<=N;i++){
-        if(!st[i]){
-            for(int j=i+i;j<=N;j+=i) st[j] =1;
-            for(int j=i;j<=N;j+=i){
-                int t = j, c= 0;
-                while(t%i==0){
-                    c++, t/=i;
-                }
-                sum[j]*=(c+1);
-            }
-        }
-    }
-
-    for(int i=1;i<=N;i++)
-        sum[i] += sum[i-1];
-
-    scanf("%d", &n);
-    while(n--){
-        int L, R;
-        scanf("%d%d", &L, &R);
-        printf("%d\n", sum[R] - sum[L-1]);
-    }
+    scanf("%lld%lld", &a, &b);
+    prime();
+    int sum = 0;
+    for(int i=0;i<=b-a;i++)
+        if(pmark[i]==0) sum++;
+    if(a==1) sum--;
+    printf("%d\n", sum);
     return 0;
 }
