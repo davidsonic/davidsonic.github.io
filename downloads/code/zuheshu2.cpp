@@ -20,7 +20,7 @@ void prime(){
 
 //阶乘质因子分解
 void solve(int n, int k){
-    for(int i=1; i<=pcnt && pr[i]<=n;i++){
+    for(int i=1; i<=pcnt && pr[i]<=n;i++){  //starts from 1
         int x = pr[i];
         // x在n!中指数
         long long t = x;
