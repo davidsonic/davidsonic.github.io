@@ -46,19 +46,20 @@
   };
 </script>
 
-  <meta name="description" content="Jiali Duan, University of Southern California">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jiali and Sophie&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/basic-algo/index.html">
+  <meta name="description" content="Intention-aware motion planning   Motivation: Motion planning with uncertainty in human intention.Assumptions  A finite set of unknown intentions. Given intention, the agent’s dynamics is modeled and">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSCI699">
+<meta property="og:url" content="http://yoursite.com/blog/CSCI699/index.html">
 <meta property="og:site_name" content="Jiali and Sophie&#39;s Blog">
-<meta property="og:description" content="Jiali Duan, University of Southern California">
+<meta property="og:description" content="Intention-aware motion planning   Motivation: Motion planning with uncertainty in human intention.Assumptions  A finite set of unknown intentions. Given intention, the agent’s dynamics is modeled and">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-16T17:51:37.000Z">
+<meta property="article:modified_time" content="2020-03-16T19:25:14.550Z">
 <meta property="article:author" content="Jiali Duan">
-<meta property="article:tag" content="Jiali Duan">
-<meta property="article:tag" content=" USC">
+<meta property="article:tag" content="HRI">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/tags/basic-algo/">
+<link rel="canonical" href="http://yoursite.com/blog/CSCI699/">
 
 
 <script id="page-configurations">
@@ -66,11 +67,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>Tag: basic_algo | Jiali and Sophie's Blog</title>
+  <title>CSCI699 | Jiali and Sophie's Blog</title>
   
 
 
@@ -206,50 +207,135 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">basic_algo
-          <small>Tag</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/CSCI699/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jiali Duan">
+      <meta itemprop="description" content="Jiali Duan, University of Southern California">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jiali and Sophie's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSCI699
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-03-16 13:51:37 / Modified: 15:25:14" itemprop="dateCreated datePublished" datetime="2020-03-16T13:51:37-04:00">2020-03-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Papers/" itemprop="url" rel="index">
+                    <span itemprop="name">Papers</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2020</h1>
+        <blockquote><p>Intention-aware motion planning</p>
+</blockquote>
+
+<p><b>Motivation:</b> Motion planning with uncertainty in human intention.<br><b>Assumptions</b></p>
+<ol>
+<li>A finite set of unknown intentions.</li>
+<li>Given intention, the agent’s dynamics is modeled and known to robot.</li>
+<li>The agent has perfect information on the robot’s and its own state.</li>
+</ol>
+<p><b>Idea:</b></p>
+<ol>
+<li>Model intent-aware motion planning as a Partially Observable Markov Decision Process.</li>
+<li>The agent’s intention is the primary uncertainty state variable in MOMDP.</li>
+</ol>
+<p><b>Preliminaries</b></p>
+<ol>
+<li>MDP allows to model action uncertainty only and the state is fully obserable.</li>
+<li>POMDP specifies p(o|s’,a), which models observation uncertainty.</li>
+<li>In POMDP, state is not known and is represented as a belief b(s).</li>
+<li>A POMDP policy induces a value function mapping from b to reward.</li>
+<li>Each alpha-vector defines a hyperplane over B. The value function V can be represented as a finite set of hyperplanes.</li>
+</ol>
+<p><b>Method</b></p>
+<ol>
+<li>In the offline stage, construct a motion model for each agent intention; in the online stage, infer over a finite set of agent intentions and act accordingly.</li>
+<li>Modelling<ol>
+<li>Each intention type corresponds to an agent policy $\rou: XxYx\theta$.</li>
+<li>$\rou$ can be computed by solving a simplified MDP. Assume the pedestrian follows shortest path and avoids collision.</li>
+</ol>
+</li>
+<li>Execution<ol>
+<li>MOMDP policy, represented as a value function $V(x, y, b_\theta)$.</li>
+<li>First selects an action for current belief: $V(x, y, b_\theta) = max_{a} {a * b_\theta}$</li>
+<li>Then update the belief: $b’<em>\theta = Z(x’,y’, o) \sum</em>{\theta}{T_x(x, a, x’) * T_y{x, y, \theta, y’} * b(\theta)}$</li>
+</ol>
+</li>
+</ol>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-06T20:26:05-05:00"
-              content="2020-02-06">
-          02-06
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/HRI/" rel="tag"># HRI</a>
+          </div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/blog/hello-world/" itemprop="url">
-            <span itemprop="name">Quick Sort Template</span>
-          </a>
-      </h2>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/reinforcement-learning1/" rel="prev" title="reinforcement_learning-1">
+      <i class="fa fa-chevron-left"></i> reinforcement_learning-1
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-    </div>
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
