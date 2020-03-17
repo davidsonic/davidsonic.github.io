@@ -1,7 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CSCI699</title>
+    <title>Planning for Autononous Cars that Leverage Effects on Human Actions</title>
+    <url>/blog/Planning-for-Autononous-Cars/</url>
+    <content><![CDATA[<p><b>Idea: </b></p>
+<ol>
+<li>Action from the autonomous car will affect human responses and these could be leveraged for planning.</li>
+<li>Approximate human as optimal driver, with a reward function acquired through inverse reinforcement learning.</li>
+</ol>
+<p><b>Motivation:</b></p>
+<ol>
+<li>Current autonomous cars are defensive</li>
+<li>Plan more efficient and communicative behaviors for autonomous cars.</li>
+</ol>
+<a id="more"></a>
+
+<p><b>Assumptions</b></p>
+<ol>
+<li>Two car system.</li>
+</ol>
+<p><b>Method</b></p>
+<ol>
+<li><p>The robot will use MPC at every iteration by computing a finite sequence of actions to maximize its reward and then execute the first one. (Eqn 5).</p>
+<img src="/downloads/imgs/auton1.png" class="example" title="title exg" alt="alt exg">
+</li>
+<li><p>Compute u^{*}_H by optimizing the following:</p>
+<img src="/downloads/imgs/auton2.png" class="example" title="title exg" alt="alt exg">
+</li>
+<li><p>Learn r_h with inverse reinforcement learning (separate optimization process that maximizes probability of demonstrations).</p>
+</li>
+</ol>
+<p><b>Implementations</b><br>Use theano to compute jacobian and hessian symbolically and use L-BFGS to optimize Eqn 5. (code: <a href="https://github.com/dsadigh/driving-interactions/blob/master/utils.py" target="_blank" rel="noopener">https://github.com/dsadigh/driving-interactions/blob/master/utils.py</a>)</p>
+]]></content>
+      <categories>
+        <category>Papers</category>
+      </categories>
+      <tags>
+        <tag>HRI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Human-Robot-Mutual</title>
+    <url>/blog/Human-Robot-Mutual/</url>
+    <content><![CDATA[<blockquote><p>Formalizing Human-Robot Mutual Adaptation: A Bounded Memory Model</p>
+</blockquote>
+
+<p><b>Idea: </b> the robot reasons how human may change its strategy, based on a model of human adaptation.<br><b>Motivation:</b></p>
+<ol>
+<li>Previous works do not use a model of human adaptation that can enable the robot to actively influence the actions of human.</li>
+<li>Previous works do not reason over the human adaptation throughout the interaction. Compare with Intention-Aware Motion Planning paper. </li>
+</ol>
+<a id="more"></a>
+
+<p><b>Assumptions</b></p>
+<ol>
+<li>Definition of m_r, m_h requires a specific collaborative task (rotating table as in paper).</li>
+</ol>
+<p><b>Preliminaries</b></p>
+<ol>
+<li>f maps QxArxAh into modes M: {0,1}.</li>
+<li>Q=X_state x H_k at time step i is reprensented eventually as m_{h}^{i}, m_{r}^{i}, computed over a history of length k.</li>
+</ol>
+<p><b>Method</b><br>Modelling (adaptable human): Human adaptability a is accounted for via transition function P: Q to P(Q). At state q, the human will choose action specified by m_r with probability a, or m_h with 1-a.<br>Planning (adaptable robot):</p>
+<ol>
+<li>S: X x Y; X: X_world x M^{k} x M^{k}. M is the mode of robot/human; Y is partial observable variable, adaptabiity.</li>
+<li>human policy $\pi_h$ is from BAM model. It outputs m_h or m_r.</li>
+<li>The belief is based on unobserable variable a. Therefore, MOMDP maps from V(Q, b(a)) to a_r. Then BAM models gives human action a_h. Then use Eqn.3 (below) to update the belief.</li>
+</ol>
+<img src="/downloads/imgs/mutual1.png" class="example" title="title exg" alt="alt exg">]]></content>
+      <categories>
+        <category>Papers</category>
+      </categories>
+      <tags>
+        <tag>HRI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Intention-Aware Motion Planning</title>
     <url>/blog/CSCI699/</url>
     <content><![CDATA[<blockquote><p>Intention-aware motion planning</p>
 </blockquote>
@@ -12,6 +87,8 @@
 <li>Given intention, the agent’s dynamics is modeled and known to robot.</li>
 <li>The agent has perfect information on the robot’s and its own state.</li>
 </ol>
+<a id="more"></a>
+
 <p><b>Idea:</b></p>
 <ol>
 <li>Model intent-aware motion planning as a Partially Observable Markov Decision Process.</li>
@@ -65,8 +142,8 @@
         <category>Papers</category>
       </categories>
       <tags>
-        <tag>reinforcement_learning</tag>
         <tag>HRI</tag>
+        <tag>reinforcement_learning</tag>
       </tags>
   </entry>
   <entry>
