@@ -48,7 +48,7 @@
 <p><b>Idea: </b> the robot reasons how human may change its strategy, based on a model of human adaptation.<br><b>Motivation:</b></p>
 <ol>
 <li>Previous works do not use a model of human adaptation that can enable the robot to actively influence the actions of human.</li>
-<li>Previous works do not reason over the human adaptation throughout the interaction. Compare with Intention-Aware Motion Planning paper. </li>
+<li>Previous works do not reason over the human adaptation throughout the interaction. Compare with Intention-Aware Motion Planning paper.</li>
 </ol>
 <a id="more"></a>
 
@@ -155,19 +155,26 @@
 <p>The idea is to train a noisy student no smaller than the teacher and repeat.</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">While not converge</span><br><span class="line">    1. Train a teacher net to provide pseudo-labels (unoised).</span><br><span class="line">    2. Train a larger student model with pseudo and groundtruth labels (noised).</span><br></pre></td></tr></table></figure>
 
+<a id="more"></a>
+
 <blockquote><p>Embedding Expansion: Augmentation in Embedding Space for Deep Metric Learning</p>
 </blockquote>
 <p><b>Idea:</b> Proposes an embedding augmentation and combines with representation learning.<br><b>Motivation:</b> To generate hard-synthsis with easy samples without using GAN.<br><b>Related Work:</b> query expansion and database augmentation.<br><b>Method:</b> Loss/Negative Pair Mining</p>
 <blockquote><p>Momentum Contrast for Unsupervised Visual Representation Learning</p>
 </blockquote>
-
-
-
+<p><b>Motivation:</b> Close the gap between unsupervised learning and supervised learning.<br><b>Idea: </b>Reformulate contrastive matching as dictionary look-up<br><b>Method</b></p>
+<ol>
+<li>Loss function: maximize softmax on the positive key</li>
+<li>Implement the dictionary as a queue and maintains a momentum update on the key encoder</li>
+</ol>
 <blockquote><p>A Simple Framework for Contrastive Learning of Visual Representations</p>
 </blockquote>
-
-
-
+<p><b>Method</b></p>
+<ol>
+<li>Data augmentation plays a crucial role</li>
+<li>Nonlinear transformation between representation and loss is crucial</li>
+<li>Larger batch_size and more training steps compared to supervised training</li>
+</ol>
 <blockquote><p>Learning Diverse Fashion Collocation by Neural Graph Filtering</p>
 </blockquote>
 <p><b>Motivation:</b> To achieve compatibility, diversity and flexibility requirements of fashion<br>collocation.</p>

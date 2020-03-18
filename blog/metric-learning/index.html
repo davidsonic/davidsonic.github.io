@@ -54,7 +54,7 @@
 <meta property="og:description" content="Self-training with Noisy Student improves ImageNet classification   The idea is to train a noisy student no smaller than the teacher and repeat. 123While not converge    1. Train a teacher net to prov">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-15T05:33:23.000Z">
-<meta property="article:modified_time" content="2020-03-16T17:52:26.541Z">
+<meta property="article:modified_time" content="2020-03-18T20:46:34.423Z">
 <meta property="article:author" content="Jiali Duan">
 <meta property="article:tag" content="metric-learning">
 <meta name="twitter:card" content="summary">
@@ -242,7 +242,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-16 13:52:26" itemprop="dateModified" datetime="2020-03-16T13:52:26-04:00">2020-03-16</time>
+                <time title="Modified: 2020-03-18 16:46:34" itemprop="dateModified" datetime="2020-03-18T16:46:34-04:00">2020-03-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -280,19 +280,26 @@
 <p>The idea is to train a noisy student no smaller than the teacher and repeat.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">While not converge</span><br><span class="line">    1. Train a teacher net to provide pseudo-labels (unoised).</span><br><span class="line">    2. Train a larger student model with pseudo and groundtruth labels (noised).</span><br></pre></td></tr></table></figure>
 
+<a id="more"></a>
+
 <blockquote><p>Embedding Expansion: Augmentation in Embedding Space for Deep Metric Learning</p>
 </blockquote>
 <p><b>Idea:</b> Proposes an embedding augmentation and combines with representation learning.<br><b>Motivation:</b> To generate hard-synthsis with easy samples without using GAN.<br><b>Related Work:</b> query expansion and database augmentation.<br><b>Method:</b> Loss/Negative Pair Mining</p>
 <blockquote><p>Momentum Contrast for Unsupervised Visual Representation Learning</p>
 </blockquote>
-
-
-
+<p><b>Motivation:</b> Close the gap between unsupervised learning and supervised learning.<br><b>Idea: </b>Reformulate contrastive matching as dictionary look-up<br><b>Method</b></p>
+<ol>
+<li>Loss function: maximize softmax on the positive key</li>
+<li>Implement the dictionary as a queue and maintains a momentum update on the key encoder</li>
+</ol>
 <blockquote><p>A Simple Framework for Contrastive Learning of Visual Representations</p>
 </blockquote>
-
-
-
+<p><b>Method</b></p>
+<ol>
+<li>Data augmentation plays a crucial role</li>
+<li>Nonlinear transformation between representation and loss is crucial</li>
+<li>Larger batch_size and more training steps compared to supervised training</li>
+</ol>
 <blockquote><p>Learning Diverse Fashion Collocation by Neural Graph Filtering</p>
 </blockquote>
 <p><b>Motivation:</b> To achieve compatibility, diversity and flexibility requirements of fashion<br>collocation.</p>
