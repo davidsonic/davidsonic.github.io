@@ -46,22 +46,20 @@
   };
 </script>
 
-  <meta name="description" content="司令部的将军们打算在NM的网格地图上部署他们的炮兵部队。一个NM的地图由N行M列组成，地图的每一格可能是山地（用“H” 表示），也可能是平原（用“P”表示），如下图。在每一格平原地形上最多可以布置一支炮兵部队（山地上不能够部署炮兵部队）；一支炮兵部队在地图上的攻击范围如图中黑色区域所示：  如果在地图中的灰色所标识的平原上部署一支炮兵部队，则图中的黑色的网格表示它能够攻击到的区域：沿横向左右各两格">
+  <meta name="description" content="You have N integers, A1, A2, … , AN. You need to deal with two kinds of operations. One type of operation is to add some given number to each number in a given interval. The other is to ask for the su">
 <meta property="og:type" content="article">
-<meta property="og:title" content="炮兵阵地">
-<meta property="og:url" content="http://yoursite.com/blog/%E7%82%AE%E5%85%B5%E9%98%B5%E5%9C%B0/index.html">
+<meta property="og:title" content="POJ_3468">
+<meta property="og:url" content="http://yoursite.com/blog/POJ-3468/index.html">
 <meta property="og:site_name" content="Jiali and Sophie&#39;s Blog">
-<meta property="og:description" content="司令部的将军们打算在NM的网格地图上部署他们的炮兵部队。一个NM的地图由N行M列组成，地图的每一格可能是山地（用“H” 表示），也可能是平原（用“P”表示），如下图。在每一格平原地形上最多可以布置一支炮兵部队（山地上不能够部署炮兵部队）；一支炮兵部队在地图上的攻击范围如图中黑色区域所示：  如果在地图中的灰色所标识的平原上部署一支炮兵部队，则图中的黑色的网格表示它能够攻击到的区域：沿横向左右各两格">
+<meta property="og:description" content="You have N integers, A1, A2, … , AN. You need to deal with two kinds of operations. One type of operation is to add some given number to each number in a given interval. The other is to ask for the su">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/downloads/imgs/paobing.png">
-<meta property="article:published_time" content="2020-02-05T03:52:51.000Z">
-<meta property="article:modified_time" content="2020-02-07T01:26:05.128Z">
+<meta property="article:published_time" content="2020-03-21T05:36:07.000Z">
+<meta property="article:modified_time" content="2020-03-21T05:37:39.428Z">
 <meta property="article:author" content="Jiali Duan">
-<meta property="article:tag" content="DP">
+<meta property="article:tag" content="bit_tree">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/downloads/imgs/paobing.png">
 
-<link rel="canonical" href="http://yoursite.com/blog/%E7%82%AE%E5%85%B5%E9%98%B5%E5%9C%B0/">
+<link rel="canonical" href="http://yoursite.com/blog/POJ-3468/">
 
 
 <script id="page-configurations">
@@ -73,7 +71,7 @@
   };
 </script>
 
-  <title>炮兵阵地 | Jiali and Sophie's Blog</title>
+  <title>POJ_3468 | Jiali and Sophie's Blog</title>
   
 
 
@@ -214,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/%E7%82%AE%E5%85%B5%E9%98%B5%E5%9C%B0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/POJ-3468/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -227,7 +225,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          炮兵阵地
+          POJ_3468
         </h1>
 
         <div class="post-meta">
@@ -236,24 +234,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-02-04 22:52:51" itemprop="dateCreated datePublished" datetime="2020-02-04T22:52:51-05:00">2020-02-04</time>
+              <time title="Created: 2020-03-21 01:36:07 / Modified: 01:37:39" itemprop="dateCreated datePublished" datetime="2020-03-21T01:36:07-04:00">2020-03-21</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-06 20:26:05" itemprop="dateModified" datetime="2020-02-06T20:26:05-05:00">2020-02-06</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/chunji-nowcoder/" itemprop="url" rel="index">
-                    <span itemprop="name">chunji_nowcoder</span>
+                  <a href="/categories/wanmen/" itemprop="url" rel="index">
+                    <span itemprop="name">wanmen</span>
                   </a>
                 </span>
             </span>
@@ -276,35 +268,33 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>司令部的将军们打算在N<em>M的网格地图上部署他们的炮兵部队。一个N</em>M的地图由N行M列组成，地图的每一格可能是山地（用“H” 表示），也可能是平原（用“P”表示），如下图。在每一格平原地形上最多可以布置一支炮兵部队（山地上不能够部署炮兵部队）；一支炮兵部队在地图上的攻击范围如图中黑色区域所示：</p>
-<img src="/downloads/imgs/paobing.png" class="example" width="500" height="500" title="title exg" alt="alt exg">
-<p>如果在地图中的灰色所标识的平原上部署一支炮兵部队，则图中的黑色的网格表示它能够攻击到的区域：沿横向左右各两格，沿纵向上下各两格。图上其它白色网格均攻击不到。从图上可见炮兵的攻击范围不受地形的影响。</p>
-<p>现在，将军们规划如何部署炮兵部队，在防止误伤的前提下（保证任何两支炮兵部队之间不能互相攻击，即任何一支炮兵部队都不在其他支炮兵部队的攻击范围内），在整个地图区域内最多能够摆放多少我军的炮兵部队。</p>
+        <p>You have N integers, A1, A2, … , AN. You need to deal with two kinds of operations. One type of operation is to add some given number to each number in a given interval. The other is to ask for the sum of numbers in a given interval.</p>
+<p>Input</p>
 <p>输入描述:</p>
-<blockquote><p>文件的第一行包含两个由空格分割开的正整数，分别表示N和M。<br>接下来的N行，每一行含有连续的M个字符（‘P’或者‘H’），中间没有空格。按顺序表示地图中每一行的数据。</p>
+<blockquote><p>The first line contains two numbers N and Q. 1 ≤ N,Q ≤ 100000.<br>The second line contains N numbers, the initial values of A1, A2, … , AN. -1000000000 ≤ Ai ≤ 1000000000.<br>Each of the next Q lines represents an operation.<br>“C a b c” means adding c to each of Aa, Aa+1, … , Ab. -10000 ≤ c ≤ 10000.<br>“Q a b” means querying the sum of Aa, Aa+1, … , Ab.</p>
 </blockquote>
 
+
 <p>输出描述:</p>
-<blockquote><p>文件仅在第一行包含一个整数K，表示最多能摆放的炮兵部队的数量。</p>
+<blockquote><p>You need to answer all Q commands in order. One answer in a line.</p>
 </blockquote>
 
 <a id="more"></a>
 
 <p>示例1<br>输入</p>
-<blockquote><p>5 4<br>PHPP<br>PPHH<br>PPPP<br>PHPP<br>PHHP</p>
+<blockquote><p>10 5<br>1 2 3 4 5 6 7 8 9 10<br>Q 4 4<br>Q 1 10<br>Q 2 4<br>C 3 6 3<br>Q 2 4</p>
 </blockquote>
 
 <p>输出</p>
-<blockquote><p>6</p>
+<blockquote><p>4<br>55<br>9<br>15</p>
 </blockquote>
 
 <p>说明</p>
-<blockquote><p>N&lt;=100, M&lt;=10.</p>
+<blockquote><p>The sums may exceed the range of 32-bit integers</p>
 </blockquote>
 
 
-
-<figure class="highlight c"><figcaption><span>paobingzhendi.cpp</span><a href="/downloads/code/paobingzhendi.cpp">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">110</span>, M = <span class="number">15</span>;</span><br><span class="line"><span class="keyword">int</span> S[N];</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">char</span> ms[M];</span><br><span class="line"><span class="keyword">int</span> s[<span class="number">100</span>], tot;</span><br><span class="line"><span class="keyword">int</span> c[<span class="number">1025</span>];</span><br><span class="line"><span class="keyword">int</span> dp[N][<span class="number">1025</span>][<span class="number">1025</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span>{</span><br><span class="line">    <span class="keyword">return</span> x&amp;(-x);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>, ms);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;m;j++){</span><br><span class="line">            S[i]|= (ms[j]==<span class="string">'H'</span>) &lt;&lt;j;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">1</span>&lt;&lt;m;i++)</span><br><span class="line">        <span class="keyword">if</span>(!(i&amp;(i&lt;&lt;<span class="number">1</span>)) &amp;&amp; !(i&amp;(i&lt;&lt;<span class="number">2</span>))) s[++tot] = i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;<span class="number">1</span>&lt;&lt;m;i++)</span><br><span class="line">        c[i]  = c[i-lowbit(i)] + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">1</span>;x&lt;=n;x++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=tot;i++){</span><br><span class="line">            <span class="keyword">if</span>(s[i]&amp;S[x]) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=tot;j++){</span><br><span class="line">                <span class="keyword">if</span>(s[i] &amp; s[j]) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span>(s[j] &amp; S[x<span class="number">-1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=tot;k++){</span><br><span class="line">                    <span class="keyword">if</span>(s[i]&amp;s[k]) <span class="keyword">continue</span>;</span><br><span class="line">                    <span class="keyword">if</span>(s[j]&amp;s[k]) <span class="keyword">continue</span>;</span><br><span class="line">                    <span class="keyword">if</span>(x&gt;=<span class="number">2</span> &amp;&amp; s[k]&amp;S[x<span class="number">-2</span>]) <span class="keyword">continue</span>;</span><br><span class="line">                    dp[x][i][j] = <span class="built_in">max</span>(dp[x][i][j], dp[x<span class="number">-1</span>][j][k] + c[s[i]]);</span><br><span class="line">                    ans = <span class="built_in">max</span>(ans, dp[x][i][j]);</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><figcaption><span>poj_3468.cpp</span><a href="/downloads/code/poj_3468.cpp">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line">ll N,tree1[<span class="number">100001</span>],tree2[<span class="number">100001</span>];</span><br><span class="line">ll a[<span class="number">100001</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">return</span> (x&amp;(-x));</span><br><span class="line">}</span><br><span class="line"> <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(ll x ,ll val)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    ll i;</span><br><span class="line">    <span class="keyword">for</span>( i = x ; i &lt;= N;i+=lowbit(i) )</span><br><span class="line">    {</span><br><span class="line">        tree1[i]+=val;</span><br><span class="line">        tree2[i]+=x*val;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="function">ll <span class="title">query</span><span class="params">(ll x)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    ll i;</span><br><span class="line">    ll sum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>( i = x ; i &gt; <span class="number">0</span> ;i-=lowbit(i))</span><br><span class="line">    {</span><br><span class="line">        sum+=(x+<span class="number">1</span>)*tree1[i]-tree2[i];</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    ll  Q , i , A ,B , C;</span><br><span class="line">    <span class="built_in">string</span> s;</span><br><span class="line">    ios::sync_with_stdio(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; N &gt;&gt; Q;</span><br><span class="line">    a[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> ( i = <span class="number">1</span> ;i &lt;= N ; i++)</span><br><span class="line">    {</span><br><span class="line">         <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">         update(i ,a[i]-a[i<span class="number">-1</span>]);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span> ( i = <span class="number">1</span> ; i &lt;= Q ; i ++)</span><br><span class="line">    {</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">        <span class="keyword">if</span>(s[<span class="number">0</span>]==<span class="string">'Q'</span>)</span><br><span class="line">        {</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; A &gt;&gt; B ;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; query (B)- query(A<span class="number">-1</span>)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        {</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; A &gt;&gt; B &gt;&gt; C;</span><br><span class="line">            update(A , C);</span><br><span class="line">            update(B+<span class="number">1</span> ,-C );</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -314,7 +304,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/DP/" rel="tag"># DP</a>
+              <a href="/tags/bit-tree/" rel="tag"># bit_tree</a>
           </div>
 
         
@@ -323,13 +313,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blog/%E6%84%A4%E6%80%92%E7%9A%84%E5%B0%8F%E9%B8%9F/" rel="prev" title="愤怒的小鸟 (NOIP2016)">
-      <i class="fa fa-chevron-left"></i> 愤怒的小鸟 (NOIP2016)
+    <a href="/blog/POJ-2155-matrix/" rel="prev" title="POJ_2155_matrix">
+      <i class="fa fa-chevron-left"></i> POJ_2155_matrix
     </a></div>
-      <div class="post-nav-item">
-    <a href="/blog/%E7%94%B5%E8%84%91%E7%97%85%E6%AF%92/" rel="next" title="电脑病毒">
-      电脑病毒 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
