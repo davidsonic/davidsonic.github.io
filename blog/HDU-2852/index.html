@@ -46,20 +46,20 @@
   };
 </script>
 
-  <meta name="description" content="有个公司要举行一场晚会。为了让到会的每个人不受他的直接上司约束而能玩得开心，公司领导决定：如果邀请了某个人，那么一定不会再邀请他的直接的上司，但该人的上司的上司，上司的上司的上司……都可以邀请。已知每个人最多有唯一的一个上司。已知公司的每个人参加晚会都能为晚会增添一些气氛，求一个邀请方案，使气氛值的和最大。 输入描述: 第1行一个整数N表示公司的人数，。接下一行N个整数。第i行的数表示第i个人的气">
+  <meta name="description" content="For the k-th number, we all should be very familiar with it. Of course,to kiki it is also simple. Now Kiki meets a very similar problem, kiki wants to design a container, the container is to support t">
 <meta property="og:type" content="article">
-<meta property="og:title" content="没有上司的舞会">
-<meta property="og:url" content="http://yoursite.com/blog/%E6%B2%A1%E6%9C%89%E4%B8%8A%E5%8F%B8%E7%9A%84%E8%88%9E%E4%BC%9A/index.html">
+<meta property="og:title" content="HDU_2852">
+<meta property="og:url" content="http://yoursite.com/blog/HDU-2852/index.html">
 <meta property="og:site_name" content="Jiali and Sophie&#39;s Blog">
-<meta property="og:description" content="有个公司要举行一场晚会。为了让到会的每个人不受他的直接上司约束而能玩得开心，公司领导决定：如果邀请了某个人，那么一定不会再邀请他的直接的上司，但该人的上司的上司，上司的上司的上司……都可以邀请。已知每个人最多有唯一的一个上司。已知公司的每个人参加晚会都能为晚会增添一些气氛，求一个邀请方案，使气氛值的和最大。 输入描述: 第1行一个整数N表示公司的人数，。接下一行N个整数。第i行的数表示第i个人的气">
+<meta property="og:description" content="For the k-th number, we all should be very familiar with it. Of course,to kiki it is also simple. Now Kiki meets a very similar problem, kiki wants to design a container, the container is to support t">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-02-05T04:55:55.000Z">
-<meta property="article:modified_time" content="2020-02-07T01:26:05.172Z">
+<meta property="article:published_time" content="2020-03-21T21:18:25.000Z">
+<meta property="article:modified_time" content="2020-03-21T21:20:04.979Z">
 <meta property="article:author" content="Jiali Duan">
-<meta property="article:tag" content="DP">
+<meta property="article:tag" content="bit_tree">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/blog/%E6%B2%A1%E6%9C%89%E4%B8%8A%E5%8F%B8%E7%9A%84%E8%88%9E%E4%BC%9A/">
+<link rel="canonical" href="http://yoursite.com/blog/HDU-2852/">
 
 
 <script id="page-configurations">
@@ -71,7 +71,7 @@
   };
 </script>
 
-  <title>没有上司的舞会 | Jiali and Sophie's Blog</title>
+  <title>HDU_2852 | Jiali and Sophie's Blog</title>
   
 
 
@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/%E6%B2%A1%E6%9C%89%E4%B8%8A%E5%8F%B8%E7%9A%84%E8%88%9E%E4%BC%9A/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/HDU-2852/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -225,7 +225,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          没有上司的舞会
+          HDU_2852
         </h1>
 
         <div class="post-meta">
@@ -234,24 +234,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-02-04 23:55:55" itemprop="dateCreated datePublished" datetime="2020-02-04T23:55:55-05:00">2020-02-04</time>
+              <time title="Created: 2020-03-21 17:18:25 / Modified: 17:20:04" itemprop="dateCreated datePublished" datetime="2020-03-21T17:18:25-04:00">2020-03-21</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-06 20:26:05" itemprop="dateModified" datetime="2020-02-06T20:26:05-05:00">2020-02-06</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/chunji-nowcoder/" itemprop="url" rel="index">
-                    <span itemprop="name">chunji_nowcoder</span>
+                  <a href="/categories/wanmen/" itemprop="url" rel="index">
+                    <span itemprop="name">wanmen</span>
                   </a>
                 </span>
             </span>
@@ -274,32 +268,34 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>有个公司要举行一场晚会。为了让到会的每个人不受他的直接上司约束而能玩得开心，公司领导决定：如果邀请了某个人，那么一定不会再邀请他的直接的上司，但该人的上司的上司，上司的上司的上司……都可以邀请。已知每个人最多有唯一的一个上司。<br>已知公司的每个人参加晚会都能为晚会增添一些气氛，求一个邀请方案，使气氛值的和最大。</p>
+        <p>For the k-th number, we all should be very familiar with it. Of course,to kiki it is also simple. Now Kiki meets a very similar problem, kiki wants to design a container, the container is to support the three operations.</p>
+<p>Push: Push a given element e to container</p>
+<p>Pop: Pop element of a given e from container</p>
+<p>Query: Given two elements a and k, query the kth larger number which greater than a in container;</p>
+<p>Although Kiki is very intelligent, she can not think of how to do it, can you help her to solve this problem?</p>
 <p>输入描述:</p>
-<blockquote><p>第1行一个整数N表示公司的人数，。<br>接下一行N个整数。第i行的数表示第i个人的气氛值x，。<br>接N-1下来每行两个整数K，L。表示第K个人是第L个人的上司。</p>
+<blockquote><p>Input some groups of test data ,each test data the first number is an integer m (1 &lt;= m &lt;100000), means that the number of operation to do. The next m lines, each line will be an integer p at the beginning, p which has three values:<br>If p is 0, then there will be an integer e (0 &lt;e &lt;100000), means press element e into Container.</p>
+<p>If p is 1, then there will be an integer e (0 &lt;e &lt;100000), indicated that delete the element e from the container</p>
+<p>If p is 2, then there will be two integers a and k (0 &lt;a &lt;100000, 0 &lt;k &lt;10000),means the inquiries, the element is greater than a, and the k-th larger number.</p>
 </blockquote>
 
 
 <p>输出描述:</p>
-<blockquote><p>一个数，表示最大的气氛值和。</p>
+<blockquote><p>For each deletion, if you want to delete the element which does not exist, the output “No Elment!”. For each query, output the suitable answers in line .if the number does not exist, the output “Not Find!”.</p>
 </blockquote>
 
 <a id="more"></a>
 
 <p>示例1<br>输入</p>
-<blockquote><p>4<br>1 7 3 4<br>1 2<br>2 3<br>2 4</p>
+<blockquote><p>5<br>0 5<br>1 2<br>0 6<br>2 3 2<br>2 8 1<br>7<br>0 2<br>0 2<br>0 4<br>2 1 1<br>2 1 2<br>2 1 3<br>2 1 4</p>
 </blockquote>
 
 <p>输出</p>
-<blockquote><p>8</p>
-</blockquote>
-
-<p>说明</p>
-<blockquote><p>你可以认为公司只有唯一的总boss，这个公司的关系图是一棵树。</p>
+<blockquote><p>No Elment!<br>6<br>Not Find!<br>2<br>2<br>4<br>Not Find!</p>
 </blockquote>
 
 
-<figure class="highlight c"><figcaption><span>wuhui.cpp</span><a href="/downloads/code/wuhui.cpp">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">200010</span>;</span><br><span class="line"><span class="keyword">int</span> a[N];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; edge[N];</span><br><span class="line"><span class="keyword">int</span> cnt[N];</span><br><span class="line"><span class="keyword">int</span> dp[N][<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x)</span></span>{</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;edge[x].<span class="built_in">size</span>();i++){</span><br><span class="line">        <span class="keyword">int</span> y = edge[x][i];</span><br><span class="line">        dfs(y);</span><br><span class="line">        dp[x][<span class="number">1</span>] += dp[y][<span class="number">0</span>];</span><br><span class="line">        dp[x][<span class="number">0</span>] += <span class="built_in">max</span>(dp[y][<span class="number">0</span>], dp[y][<span class="number">1</span>]);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;dp[i][<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) {</span><br><span class="line">        <span class="keyword">int</span> a, b;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;a, &amp;b);</span><br><span class="line">        edge[a].push_back(b);</span><br><span class="line">        cnt[b]++;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">int</span> t = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;=n; i++)</span><br><span class="line">        <span class="keyword">if</span> (!cnt[i]) {</span><br><span class="line">            t = i;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        }</span><br><span class="line">    dfs(t);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, <span class="built_in">max</span>(dp[t][<span class="number">0</span>], dp[t][<span class="number">1</span>]));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><figcaption><span>HDU_2852.cpp</span><a href="/downloads/code/HDU_2852.cpp">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100000</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> sum[N+<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span>{</span><br><span class="line">    <span class="keyword">return</span> x &amp;-x;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> d)</span></span>{</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=x;i&lt;=N;i+=lowbit(i))</span><br><span class="line">        sum[i] +=d;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x)</span></span>{</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=x;i&gt;<span class="number">0</span>;i-=lowbit(i)){</span><br><span class="line">        ans += sum[i];</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="keyword">int</span> m, t, e, a, k;</span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;m)){</span><br><span class="line">        <span class="built_in">memset</span>(sum, <span class="number">0</span>, <span class="keyword">sizeof</span> sum);</span><br><span class="line">        <span class="keyword">while</span>(m--){</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t);</span><br><span class="line">            <span class="keyword">if</span>(t==<span class="number">0</span>){</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;e);</span><br><span class="line">                add(e, <span class="number">1</span>);</span><br><span class="line">            }<span class="keyword">else</span> <span class="keyword">if</span>(t==<span class="number">1</span>){</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;e);</span><br><span class="line">                <span class="keyword">if</span>(!(query(e) - query(e<span class="number">-1</span>))) <span class="built_in">printf</span>(<span class="string">"No Elment!\n"</span>);</span><br><span class="line">                <span class="keyword">else</span> add(e, <span class="number">-1</span>);</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">else</span>{</span><br><span class="line">                <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;a, &amp;k);</span><br><span class="line">                <span class="keyword">int</span> v = query(a)+ k;</span><br><span class="line">                <span class="keyword">int</span> l = <span class="number">0</span>, r = N;</span><br><span class="line">                <span class="keyword">while</span>(l&lt;r){</span><br><span class="line">                    <span class="keyword">int</span> mid = l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">if</span>(query(mid)&gt;=v) r = mid;</span><br><span class="line">                    <span class="keyword">else</span> l = mid+<span class="number">1</span>;</span><br><span class="line">                }</span><br><span class="line">                <span class="keyword">if</span>(r==<span class="number">0</span> || r==N) <span class="built_in">printf</span>(<span class="string">"Not Find!\n"</span>);</span><br><span class="line">                <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, r);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -309,7 +305,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/DP/" rel="tag"># DP</a>
+              <a href="/tags/bit-tree/" rel="tag"># bit_tree</a>
           </div>
 
         
@@ -318,13 +314,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blog/%E7%94%B5%E8%84%91%E7%97%85%E6%AF%92/" rel="prev" title="电脑病毒">
-      <i class="fa fa-chevron-left"></i> 电脑病毒
+    <a href="/blog/poj-2352/" rel="prev" title="poj_2352">
+      <i class="fa fa-chevron-left"></i> poj_2352
     </a></div>
-      <div class="post-nav-item">
-    <a href="/blog/%E4%BA%8C%E5%8F%89%E8%8B%B9%E6%9E%9C%E6%A0%91/" rel="next" title="二叉苹果树">
-      二叉苹果树 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
