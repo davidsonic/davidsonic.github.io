@@ -45,9 +45,10 @@ int main(){
     }
     sort(coords.begin(), coords.end(), cmp);
 
-    for(int i=0;i<coords.size();i++){
-        add(coords[i].first, 1);
-        ans[query(coords[i].first)] ++;
+    // bit_tree can't deal with zero
+    for(int i=0;i<coords.size();i++) {
+        add(coords[i].first + 1, 1);
+        ans[query(coords[i].first+1) ]++;
     }
 
     for(int i=1;i<=n;i++){
