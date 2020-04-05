@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/wukong-16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://yoursite.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="给定一个长度为n的序列A，有m个询问，每次询问下标在[L,R]范围内的数字，从小到大排序之后，第K小的元素值。 输入描述: 第一行两个整数n和m。第二行n个整数，表示Ai。接下来m行，每行3个整数L,R,K。    输出描述: 对于每个询问，输出相应的结果。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="区间第k值">
+<meta property="og:url" content="http://yoursite.com/blog/%E5%8C%BA%E9%97%B4%E7%AC%ACk%E5%80%BC/index.html">
+<meta property="og:site_name" content="Jiali and Sophie&#39;s Blog">
+<meta property="og:description" content="给定一个长度为n的序列A，有m个询问，每次询问下标在[L,R]范围内的数字，从小到大排序之后，第K小的元素值。 输入描述: 第一行两个整数n和m。第二行n个整数，表示Ai。接下来m行，每行3个整数L,R,K。    输出描述: 对于每个询问，输出相应的结果。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-05T01:11:33.000Z">
+<meta property="article:modified_time" content="2020-04-05T01:23:48.995Z">
+<meta property="article:author" content="Jiali Duan">
+<meta property="article:tag" content="seg_tree">
+<meta property="article:tag" content="block">
+<meta property="article:tag" content="bit_tree">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/blog/%E5%8C%BA%E9%97%B4%E7%AC%ACk%E5%80%BC/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>区间第k值 | Jiali and Sophie's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jiali and Sophie's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Talk is Cheap, Show Me the Code!</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/blog/%E5%8C%BA%E9%97%B4%E7%AC%ACk%E5%80%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jiali Duan">
+      <meta itemprop="description" content="Jiali Duan, University of Southern California">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jiali and Sophie's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          区间第k值
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-04-04 21:11:33 / Modified: 21:23:48" itemprop="dateCreated datePublished" datetime="2020-04-04T21:11:33-04:00">2020-04-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/chunji-nowcoder/" itemprop="url" rel="index">
+                    <span itemprop="name">chunji_nowcoder</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>给定一个长度为n的序列A，有m个询问，每次询问下标在[L,R]范围内的数字，从小到大排序之后，第K小的元素值。</p>
+<p>输入描述:</p>
+<blockquote><p>第一行两个整数n和m。<br>第二行n个整数，表示Ai。<br>接下来m行，每行3个整数L,R,K。</p>
+</blockquote>
+
+
+<p>输出描述:</p>
+<blockquote><p>对于每个询问，输出相应的结果。</p>
+</blockquote>
+
+<a id="more"></a>
+
+<p>示例1<br>输入</p>
+<blockquote><p>5 3<br>10 5 3 4 8<br>1 2 1<br>2 4 3<br>1 5 4</p>
+</blockquote>
+
+<p>输出</p>
+<blockquote><p>5<br>5<br>8</p>
+</blockquote>
+
+<p>说明</p>
+<blockquote><p>n,m&lt;=30000</p>
+</blockquote>
+
+
+<figure class="highlight c"><figcaption><span>qujiank_fenkuai.cpp</span><a href="/downloads/code/qujiank_fenkuai.cpp">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 30005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> A[M],B[M],S,num[M];</span><br><span class="line"><span class="keyword">int</span> sum[<span class="number">180</span>][M];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> L,<span class="keyword">int</span> R,<span class="keyword">int</span> x)</span></span>{<span class="comment">//在[L,R]范围内找&lt;=x的个数</span></span><br><span class="line">    <span class="keyword">int</span> kl=L/S,kr=R/S,cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(kl==kr){</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=L;i&lt;=R;i++)</span><br><span class="line">            cnt+=A[i]&lt;=num[x];</span><br><span class="line">    }<span class="keyword">else</span>{</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=L;i&lt;(kl+<span class="number">1</span>)*S;i++)cnt+=A[i]&lt;=num[x];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=kl+<span class="number">1</span>;i&lt;kr;i++)cnt+=sum[i][x];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=kr*S;i&lt;=R;i++)cnt+=A[i]&lt;=num[x];</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> cnt;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line"></span><br><span class="line">    freopen(<span class="string">"kth.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"my.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;A[i]);</span><br><span class="line">        num[i<span class="number">-1</span>]=B[i]=A[i];</span><br><span class="line">    }</span><br><span class="line">    S=<span class="built_in">sqrt</span>(n);</span><br><span class="line">    sort(num,num+n);</span><br><span class="line">    <span class="keyword">int</span> v=unique(num,num+n)-num;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">        <span class="keyword">int</span> k=lower_bound(num,num+v,A[i])-num;</span><br><span class="line">        sum[i/S][k]++;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n/S;i++)<span class="comment">//预处理每个块的前缀和</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;v;j++)sum[i][j]+=sum[i][j<span class="number">-1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(m--){</span><br><span class="line">        <span class="keyword">int</span> a,b,c;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;a,&amp;b,&amp;c);</span><br><span class="line">        <span class="keyword">int</span> L=<span class="number">0</span>,R=v<span class="number">-1</span>,res;</span><br><span class="line">        <span class="keyword">while</span>(L&lt;=R){</span><br><span class="line">            <span class="keyword">int</span> mid=(L+R)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> tmp=<span class="built_in">get</span>(a,b,mid);</span><br><span class="line">            <span class="keyword">if</span>(tmp&gt;=c){</span><br><span class="line">                res=mid;R=mid<span class="number">-1</span>;</span><br><span class="line">            }<span class="keyword">else</span> L=mid+<span class="number">1</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,num[res]);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><figcaption><span>qujiank_fenkuai1.cpp</span><a href="/downloads/code/qujiank_fenkuai1.cpp">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 30005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> A[M],B[M],S,num[M];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> L,<span class="keyword">int</span> R,<span class="keyword">int</span> x)</span></span>{<span class="comment">//在[L,R]范围内找&lt;=x的个数</span></span><br><span class="line">    <span class="keyword">int</span> kl=L/S,kr=R/S,cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(kl==kr){</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=L;i&lt;=R;i++)</span><br><span class="line">            cnt+=A[i]&lt;=x;</span><br><span class="line">    }<span class="keyword">else</span>{</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=L;i&lt;(kl+<span class="number">1</span>)*S;i++)cnt+=A[i]&lt;=x;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=kl+<span class="number">1</span>;i&lt;kr;i++)cnt+=upper_bound(B+i*S,B+i*S+S,x)-(B+i*S);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=kr*S;i&lt;=R;i++)cnt+=A[i]&lt;=x;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> cnt;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    freopen(<span class="string">"kth.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"my.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">    <span class="keyword">int</span> n,m;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;A[i]);</span><br><span class="line">        num[i]=B[i]=A[i];</span><br><span class="line">    }</span><br><span class="line">    S=<span class="built_in">sqrt</span>(n*<span class="built_in">log</span>(n)/<span class="built_in">log</span>(<span class="number">2</span>));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=S;i+S<span class="number">-1</span>&lt;=n;i+=S)sort(B+i,B+i+S); <span class="comment">//第一个区间不排序</span></span><br><span class="line">    sort(num+<span class="number">1</span>,num+n+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">while</span>(m--){</span><br><span class="line">        <span class="keyword">int</span> a,b,c;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;a,&amp;b,&amp;c);</span><br><span class="line">        <span class="keyword">int</span> L=<span class="number">1</span>,R=n,res;</span><br><span class="line">        <span class="keyword">while</span>(L&lt;=R){</span><br><span class="line">            <span class="keyword">int</span> mid=(L+R)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> tmp=<span class="built_in">get</span>(a,b,num[mid]);</span><br><span class="line">            <span class="keyword">if</span>(tmp&gt;=c){</span><br><span class="line">                res=num[mid];</span><br><span class="line">                R=mid<span class="number">-1</span>;</span><br><span class="line">            }<span class="keyword">else</span> L=mid+<span class="number">1</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,res);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><figcaption><span>qujiank_segtree.cpp</span><a href="/downloads/code/qujiank_segtree.cpp">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 30005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>{</span></span><br><span class="line">    <span class="keyword">int</span> L,R;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;num;</span><br><span class="line">}tree[M&lt;&lt;<span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> A[M],s[M];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> L,<span class="keyword">int</span> R,<span class="keyword">int</span> p)</span></span>{</span><br><span class="line">    tree[p].L=L,tree[p].R=R;</span><br><span class="line">    tree[p].num.<span class="built_in">clear</span>();</span><br><span class="line">    <span class="keyword">if</span>(L==R){</span><br><span class="line">        tree[p].num.push_back(A[L]);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">int</span> mid=(L+R)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    build(L,mid,p&lt;&lt;<span class="number">1</span>);</span><br><span class="line">    build(mid+<span class="number">1</span>,R,p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</span><br><span class="line">    tree[p].num.resize(R-L+<span class="number">1</span>);<span class="comment">//****</span></span><br><span class="line">    merge(tree[p&lt;&lt;<span class="number">1</span>].num.<span class="built_in">begin</span>(),tree[p&lt;&lt;<span class="number">1</span>].num.<span class="built_in">end</span>(),</span><br><span class="line">          tree[p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].num.<span class="built_in">begin</span>(),tree[p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].num.<span class="built_in">end</span>(),</span><br><span class="line">          tree[p].num.<span class="built_in">begin</span>());</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> L,<span class="keyword">int</span> R,<span class="keyword">int</span> x,<span class="keyword">int</span> p)</span></span>{</span><br><span class="line">    <span class="keyword">if</span>(L==tree[p].L&amp;&amp;R==tree[p].R){</span><br><span class="line">        <span class="keyword">return</span> upper_bound(tree[p].num.<span class="built_in">begin</span>(),tree[p].num.<span class="built_in">end</span>(),x)-tree[p].num.<span class="built_in">begin</span>();</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">int</span> mid=(tree[p].L+tree[p].R)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(R&lt;=mid)<span class="keyword">return</span> query(L,R,x,p&lt;&lt;<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(L&gt;mid)<span class="keyword">return</span> query(L,R,x,p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">else</span>{</span><br><span class="line">        <span class="keyword">return</span> query(L,mid,x,p&lt;&lt;<span class="number">1</span>)+query(mid+<span class="number">1</span>,R,x,p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    freopen(<span class="string">"kth.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"my.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">    <span class="keyword">int</span> n,m,a,b,c;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++){</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;A[i]);</span><br><span class="line">        s[i<span class="number">-1</span>]=A[i];</span><br><span class="line">    }</span><br><span class="line">    sort(s,s+n);</span><br><span class="line">    build(<span class="number">1</span>,n,<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(m--){</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;a,&amp;b,&amp;c);</span><br><span class="line">        <span class="keyword">int</span> L=<span class="number">0</span>,R=n<span class="number">-1</span>,res;</span><br><span class="line">        <span class="keyword">while</span>(L&lt;=R){</span><br><span class="line">            <span class="keyword">int</span> mid=(L+R)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> tmp=query(a,b,s[mid],<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span>(tmp&gt;=c){</span><br><span class="line">                R=mid<span class="number">-1</span>;res=s[mid];</span><br><span class="line">            }<span class="keyword">else</span> L=mid+<span class="number">1</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,res);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><figcaption><span>qujiank_bitree.cpp</span><a href="/downloads/code/qujiank_bitree.cpp">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 30005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lowbit(x) (x&amp;(-x))</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> A[M],B[M],S,num[M],C[M],V,ans[M],n;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>{</span></span><br><span class="line">    <span class="keyword">int</span> a,b,c,l,r,mid,res,id;</span><br><span class="line">}query[M];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Num</span>{</span></span><br><span class="line">    <span class="keyword">int</span> id,x;</span><br><span class="line">}G[M];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(node a,node b)</span></span>{</span><br><span class="line">    <span class="keyword">return</span> a.mid&lt;b.mid;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp1</span><span class="params">(Num a,Num b)</span></span>{</span><br><span class="line">    <span class="keyword">return</span> a.x&lt;b.x;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Add</span><span class="params">(<span class="keyword">int</span> x)</span></span>{</span><br><span class="line">    <span class="keyword">if</span>(x==<span class="number">0</span>)<span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">while</span>(x&lt;=n){</span><br><span class="line">        C[x]++;x+=lowbit(x);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Get</span><span class="params">(<span class="keyword">int</span> x)</span></span>{</span><br><span class="line">    <span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(x&gt;<span class="number">0</span>){</span><br><span class="line">        res+=C[x];</span><br><span class="line">        x-=lowbit(x);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    freopen(<span class="string">"kth.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"my.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++){</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;A[i]);</span><br><span class="line">        num[i]=A[i];</span><br><span class="line">    }</span><br><span class="line">    sort(num,num+n);</span><br><span class="line">    V=unique(num,num+n)-num;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++){</span><br><span class="line">        A[i]=lower_bound(num,num+V,A[i])-num;</span><br><span class="line">        G[i].id=i+<span class="number">1</span>,G[i].x=A[i];</span><br><span class="line">    }</span><br><span class="line">    sort(G,G+n,cmp1);</span><br><span class="line">    <span class="keyword">int</span> a,b,c;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++){</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>,&amp;a,&amp;b,&amp;c);</span><br><span class="line">        query[i]=(node){a,b,c,<span class="number">0</span>,V<span class="number">-1</span>,(V<span class="number">-1</span>)&gt;&gt;<span class="number">1</span>,<span class="number">-1</span>,i};</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">15</span>;i++){</span><br><span class="line">        sort(query,query+m,cmp);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> k=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)C[j]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;m;j++){</span><br><span class="line">            <span class="keyword">if</span>(query[j].l&gt;query[j].r)<span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">while</span>(k&lt;n&amp;&amp;G[k].x&lt;=query[j].mid){</span><br><span class="line">                Add(G[k++].id);</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">int</span> tmp=Get(query[j].b)-Get(query[j].a<span class="number">-1</span>);</span><br><span class="line">            <span class="keyword">if</span>(tmp&gt;=query[j].c){</span><br><span class="line">                query[j].res=query[j].mid;</span><br><span class="line">                query[j].r=query[j].mid<span class="number">-1</span>;</span><br><span class="line">            }<span class="keyword">else</span>{</span><br><span class="line">                query[j].l=query[j].mid+<span class="number">1</span>;</span><br><span class="line">            }</span><br><span class="line">            query[j].mid=query[j].l+query[j].r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)ans[query[i].id]=num[query[i].res];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/seg-tree/" rel="tag"># seg_tree</a>
+              <a href="/tags/block/" rel="tag"># block</a>
+              <a href="/tags/bit-tree/" rel="tag"># bit_tree</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/POJ-1804/" rel="prev" title="POJ-1804">
+      <i class="fa fa-chevron-left"></i> POJ-1804
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/%E5%8A%A8%E6%80%81%E5%8C%BA%E9%97%B4%E8%BF%9E%E7%BB%AD%E5%92%8C/" rel="next" title="动态区间连续和">
+      动态区间连续和 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jiali Duan</p>
+  <div class="site-description" itemprop="description">Jiali Duan, University of Southern California</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/davidsonic" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;davidsonic" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/jli.duan@gmail.com" title="E-Mail → jli.duan@gmail.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://davidsonic.github.io/index/" title="Google → https:&#x2F;&#x2F;davidsonic.github.io&#x2F;index&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-google"></i>Google</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Friend Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://xiaoyuanguo.github.io/academics/" title="https:&#x2F;&#x2F;xiaoyuanguo.github.io&#x2F;academics&#x2F;" rel="noopener" target="_blank">Xiaoyuan Guo</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="mcl-lab.usc.edu:1313/" title="mcl-lab.usc.edu:1313&#x2F;" rel="noopener" target="_blank">Jiali Duan</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-Jiali Duan"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiali Duan</span>
+</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
