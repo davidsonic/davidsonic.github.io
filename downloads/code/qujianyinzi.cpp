@@ -10,7 +10,7 @@ int n;
 
 int main(){
     for(int i=1;i<=N;i++) sum[i] = 1;
-    for(int i=2;i<=N;i++){
+    for(int i=2;i<=N;i++){ //O(nloglogN)
         if(!st[i]){
             for(int j=i+i;j<=N;j+=i) st[j] =1;
             for(int j=i;j<=N;j+=i){
