@@ -1,4 +1,4 @@
-//查分数组， 或者扫描线
+//差分数组， 或者扫描线
 #include <iostream>
 #include <vector>
 #include <algorithm>
